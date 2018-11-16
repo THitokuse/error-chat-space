@@ -1,1 +1,41 @@
-Hello world
+.chatspace
+  .chat-side
+    .chat-user
+      %h3.header__name
+        太一朗
+        = fa_icon 'cog', class: 'icon'
+        = fa_icon 'pencil-square-o', class: 'icon'
+    .chat-group
+      .chat-group__name
+        長谷川カンパニー
+      .chat-group__message
+        メッセージ
+      .chat-group__name
+        長谷川カンパニー
+      .chat-group__message
+        メッセージ
+
+  .chat-main
+    .chat-header
+      .chat-header__left
+        %h2.group 長谷川カンパニー
+        %p.user
+          member：長谷川、ヒトクセ
+      .chat-header__right
+        .edit-btn Edit
+    .chat-body
+      %ul.chat-contents
+        .chat-content
+          .chat-content__header
+            .chat-content__name
+              長谷川
+            .chat-content__time
+              2018/11/18
+          .chat-content__message
+            長谷川テスト
+    .chat-footer
+      .msg_form
+        .chat-footer__text
+      %label.form__mask
+        %i.fa.fa-picture-o
+      .send Send
