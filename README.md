@@ -5,8 +5,8 @@
 |column|type|option|
 |------|----|------|
 |id|integer(11)|AI, PRIMARY_KEY|
-|name|varchar(255)||
-|email|varchar(255)||
+|name|varchar(255)|null: false|
+|email|varchar(255)|null: false, unique: true|
 
 ### アソシエーション
 
@@ -18,11 +18,11 @@ has_many messages
 
 |column|type|option|
 |------|----|------|
-|id|integer(11)||
-|content|varchar(255)||
-|image|varchar(255)||
-|group_id|integer(11)||
-|user_id|integer(11)||
+|id|integer(11)|AI, PRIMARY_KEY|
+|content|varchar(255)|-----|
+|image|varchar(255)|-----|
+|group_id|integer(11)|null: false, foreign_key: true|
+|user_id|integer(11)|null: false, foreign_key: true|
 
 ### アソシエーション
 
@@ -34,7 +34,7 @@ belongs_to group
 |column|type|option|
 |------|----|------|
 |id|integer(11)|AI, PRIMARY_KEY|
-|name|varchar(255)||
+|name|varchar(255)|null:false|
 
 ### アソシエーション
 
@@ -47,8 +47,8 @@ has_many users through group_users
 |column|type|option|
 |------|----|------|
 |id|integer(11)|AI, PRIMARY_KEY|
-|user_id|integer(11)||
-|group_id|integer(11)||
+|user_id|integer(11)|null: false, foreign_key: true|
+|group_id|integer(11)|null: false, foreign_key:true|
 
 ### アソシエーション 中間テーブル
 belongs_to user
