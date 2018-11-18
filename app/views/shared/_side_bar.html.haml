@@ -1,0 +1,16 @@
+.chat-side
+  .chat-user
+    %h3.header__name
+      = current_user.name
+      = link_to edit_user_path(current_user) do
+        = fa_icon 'cog', class: 'icon'
+      = fa_icon 'pencil-square-o', class: 'icon'
+  .chat-group
+    .chat-group__name
+      長谷川カンパニー
+    .chat-group__message
+      メッセージ
+    .chat-group__name
+      長谷川カンパニー
+    .chat-group__message
+      メッセージ
