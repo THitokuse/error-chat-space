@@ -20,8 +20,10 @@
           .chat-content__message
             長谷川テスト
     .chat-footer
-      .msg_form
-        .chat-footer__text
-      %label.form__mask
-        = fa_icon 'picture-o'
-      .send Send
+      = form_for [@group, @message], html: {class: 'msg_form'} do |f|
+        = f.hidden_field :user_id, value: "#{@message.user_id}"
+        = f.text_field :content, class: 'chat-footer__text', placeholder: 'type a message'
+        %label.form__mask
+          %i.fa.fa-picture-o
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'send'
