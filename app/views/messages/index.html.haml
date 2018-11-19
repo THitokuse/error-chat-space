@@ -11,14 +11,7 @@
         .edit-btn Edit
     .chat-body
       %ul.chat-contents
-        .chat-content
-          .chat-content__header
-            .chat-content__name
-              長谷川
-            .chat-content__time
-              2018/11/18
-          .chat-content__message
-            長谷川テスト
+        = render @messages
     .chat-footer
       = form_for [@group, @message], html: {class: 'msg_form'} do |f|
         = f.hidden_field :user_id, value: "#{@message.user_id}"
