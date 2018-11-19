@@ -8,7 +8,7 @@
         %p.user
           member：長谷川、ヒトクセ
       .chat-header__right
-        .edit-btn Edit
+        = link_to "Edit", edit_group_path(@group), method: :get, class: 'edit-btn'
     .chat-body
       %ul.chat-contents
         = render @messages
