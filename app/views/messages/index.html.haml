@@ -4,9 +4,11 @@
   .chat-main
     .chat-header
       .chat-header__left
-        %h2.group 長谷川カンパニー
+        %h2.group #{@group.name}
         %p.user
-          member：長谷川、ヒトクセ
+          member：
+          -@group.users.each do |user|
+            #{user.name},
       .chat-header__right
         = link_to "Edit", edit_group_path(@group), method: :get, class: 'edit-btn'
     .chat-body
