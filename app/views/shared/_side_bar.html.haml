@@ -8,8 +8,8 @@
         = fa_icon 'pencil-square-o', class: 'icon'
   .chat-group
     - current_user.groups.each do |group|
-      / = link_to group_messages_path(group) do
-      .chat-group__name
-        = group.name
-      .chat-group__message
-        = group.show_last_message
+      = link_to group_messages_path(group) do
+        .chat-group__name
+          = group.name
+        .chat-group__message
+          = group.show_last_message
