@@ -7,11 +7,9 @@
       = link_to new_group_path do
         = fa_icon 'pencil-square-o', class: 'icon'
   .chat-group
-    .chat-group__name
-      長谷川カンパニー
-    .chat-group__message
-      メッセージ
-    .chat-group__name
-      長谷川カンパニー
-    .chat-group__message
-      メッセージ
+    - current_user.groups.each do |group|
+      / = link_to group_messages_path(group) do
+      .chat-group__name
+        = group.name
+      .chat-group__message
+        メッセージはまだありません。
