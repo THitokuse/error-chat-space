@@ -7,4 +7,6 @@
   .chat-content__message
     - if message.content.present?
       = message.content
+      %br
+      %br
     = image_tag message.image.url, class: 'chat-content__image' if message.image.present?
