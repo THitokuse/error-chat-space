@@ -1,9 +1,6 @@
 $(function() {
   function buildHTML(message){
-    var addimage = '';
-    if(message.image) {
-      addimage = `<img class="chat-content__image" src="${message.image}">`
-    }
+    var addimage = (message.image) ? `<img class="chat-content__image" src="${message.image}">` : '';
     var html = `<li class="chat-content">
                   <div class="chat-content__header">
                     <div class="chat-content__name">
@@ -25,7 +22,7 @@ $(function() {
     //フォームのsubmitイベントを中止
     e.preventDefault();
     //ajaxでリクエストを送る際のパスを取得
-    var url = window.location.pathname;
+    var url = $(this).attr('action');
     //フォームに入力された値を取得
     var formData = new FormData($(this).get()[0]);
 
@@ -38,15 +35,22 @@ $(function() {
       contentType: false
     })
     .done(function(message){
+      //保存したデータをview画面に表示
       var html = buildHTML(message);
       $('.chat-contents').append(html);
+      //画面スクロール
       $('.chat-body').animate({scrollTop: $(".chat-body")[0].scrollHeight}, 'fast');
-      $('.chat-footer__text').add('.hidden').val('');
+      //フォームの初期化
+      $('.chat-footer__text').val('');
+      $('.hidden').val('');
+      //submitボタンの有効化
       $('.send').prop('disabled', false);
     })
     .fail(function(){
       alert('自動送信でエラーが発生しました。');
-      $('.chat-footer__text').add('.hidden').val('');
+      $('.chat-footer__text').val('');
+      $('.hidden').val('');
+      $('.send').prop('disabled', false);
     })
   })
 })
