@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to new_group_path}
       format.json
+    end
   end
 
   def edit
