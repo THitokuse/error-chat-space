@@ -40,16 +40,15 @@ $(function() {
       $('.chat-contents').append(html);
       //画面スクロール
       $('.chat-body').animate({scrollTop: $(".chat-body")[0].scrollHeight}, 'fast');
+    })
+    .fail(function(){
+      alert('自動送信でエラーが発生しました。');
+    })
+    .always(function(){
       //フォームの初期化
       $('.chat-footer__text').val('');
       $('.hidden').val('');
       //submitボタンの有効化
-      $('.send').prop('disabled', false);
-    })
-    .fail(function(){
-      alert('自動送信でエラーが発生しました。');
-      $('.chat-footer__text').val('');
-      $('.hidden').val('');
       $('.send').prop('disabled', false);
     })
   })
