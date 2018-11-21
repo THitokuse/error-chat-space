@@ -1,28 +1,26 @@
 $(document).on("turbolinks:load", function() {
   function appendUsers(user) {
-    var html =
-      '<div class="chat-group-user">' +
-      '<p class="chat-group-user__name">' +
-      user.name +
-      '</p>' +
-      '<p class="chat-group-user__btn chat-group-user__btn--add" data-id = ' + user.id + '>' +
-      '追加' +
-      '</p>' +
-      '</div>';
+    var html = `<div class="chat-group-user">
+                  <p class="chat-group-user__name">
+                    ${ user.name }
+                  </p>
+                  <p class="chat-group-user__btn chat-group-user__btn--add" data-id = ${ user.id }>
+                    追加
+                  </p>
+                </div>`;
     return html;
   }
 
   function appendMembers(name, user_id) {
-    var html =
-      '<div class="chat-group-user">' +
-      '<input type = "hidden", value = ' + user_id + ', name = "group[user_ids][]", id ="group_user_ids_' + user_id + '">' +
-      '<p class="chat-group-user__name">' +
-      name +
-      '</p>' +
-      '<p class="chat-group-user__btn chat-group-user__btn--remove">' +
-      '削除' +
-      '</p>' +
-      '</div>';
+    var html = `<div class="chat-group-user">
+                  <input type = "hidden", value = ${ user_id }, name = "group[user_ids][]", id ="group_user_ids_${user_id}">
+                  <p class="chat-group-user__name">
+                    ${name}
+                  </p>
+                  <p class="chat-group-user__btn chat-group-user__btn--remove">
+                    削除
+                  </p>
+                </div>`;
     return html;
   }
 
