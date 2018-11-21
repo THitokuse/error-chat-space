@@ -41,6 +41,8 @@ $(document).on("turbolinks:load", function() {
                 var html = appendUsers(user);
                 $('#user-search-result').append(html);
               })
+            } else {
+              alert("検索ワードを入力してください")
             }
          })
       .fail(function() {
