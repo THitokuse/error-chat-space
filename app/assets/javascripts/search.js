@@ -16,7 +16,6 @@ $(document).on("turbolinks:load", function() {
     $(".chat-group-form__input").on("keyup", function() {
       $("#user-search-result").children().remove();
       var user = $("#user-search-field").val();
-      console.log(user);
         $.ajax({
           type: 'GET',
           url: '/users',
