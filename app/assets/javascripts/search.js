@@ -44,7 +44,7 @@ $(document).on("turbolinks:load", function() {
             }
          })
       .fail(function() {
-        console.log('ユーザー検索に失敗しました');
+        alert('ユーザー検索に失敗しました');
       });
     });
   });
