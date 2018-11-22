@@ -24,6 +24,7 @@
       #chat-group-users
         - group.users.each do |user|
           .chat-group-user.clearfix{ id: "chat-group-user-#{user.id}" }
+            = hidden_field_tag "group[user_ids][]", user.id
             %input{ type:"hidden", name: "group[user_ids][]", value: user.id }
             %p.chat-group-user__name= user.name
             - unless user.id == current_user.id

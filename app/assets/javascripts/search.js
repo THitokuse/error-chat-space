@@ -4,8 +4,17 @@ $(document).on("turbolinks:load", function() {
                   <p class="chat-group-user__name">
                     ${ user.name }
                   </p>
-                  <p class="chat-group-user__btn chat-group-user__btn--add" data-id = ${ user.id }>
+                  <p class="chat-group-user__btn chat-group-user__btn--add" data-id = ${ user.id } data-name = ${ user.name }>
                     追加
+                  </p>
+                </div>`;
+    return html;
+  }
+
+  function notUser() {
+    var html = `<div class="chat-group-user">
+                  <p class="chat-group-user__name">
+                    検索結果はありません。
                   </p>
                 </div>`;
     return html;
@@ -42,7 +51,8 @@ $(document).on("turbolinks:load", function() {
                 $('#user-search-result').append(html);
               })
             } else {
-              alert("検索ワードを入力してください")
+              var html = notUser();
+              $('#user-search-result').append(html);
             }
          })
       .fail(function() {
@@ -54,7 +64,7 @@ $(document).on("turbolinks:load", function() {
   // ユーザーを追加
   $(function() {
     $("#user-search-result").on("click", ".chat-group-user__btn--add", function() {
-      var name = $(this).prev().text();
+      var name = $(this).data('name');
       var user_id = $(this).data('id');
       $(this).parent().remove();
       var html = appendMembers(name, user_id);
