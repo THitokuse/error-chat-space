@@ -3,7 +3,7 @@
     .chat-content__name
       =message.user.name
     .chat-content__time
-      = message.created_at.strftime('%Y/%m/%d %H:%M:%S')
+      = message.created_at.to_s(:default)
   .chat-content__message
     - if message.content.present?
       = message.content
