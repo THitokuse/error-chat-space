@@ -52,4 +52,14 @@ $(function() {
       $('.send').prop('disabled', false);
     })
   })
+
+  $(function(){
+    $(function(){
+      setInterval(update, 10000);
+    });
+
+    function update(){
+      //後から記述
+    }
+  })
 })
