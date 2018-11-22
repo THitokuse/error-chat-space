@@ -1,24 +1,52 @@
-# README
+# DB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|id|integer(11)|AI, PRIMARY_KEY|
+|name|varchar(255)|index: true, null: false, unique: true|
+|email|varchar(255)|null: false, unique: true|
 
-* Ruby version
+### Association
+- has_many group_users
+- has_many groups through group_users
+- has_many messages
 
-* System dependencies
+## messages テーブル
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|id|integer(11)|AI, PRIMARY_KEY|
+|content|varchar(255)|-------|
+|image|varchar(255)|-------|
+|group_id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
 
-* Database creation
+### Association
+- belongs_to user
+- belongs_to group
 
-* Database initialization
+## groups テーブル
 
-* How to run the test suite
+|Column|Type|Options|
+|------|----|-------|
+|id|integer(11)|AI, PRIMARY_KEY|
+|name|varchar(255)|null:false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- has_many messages
+- has_many group_users
+- has_many users through group_users
 
-* Deployment instructions
+## group_users テーブル
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|id|integer(11)|AI, PRIMARY_KEY|
+|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key:true|
+
+### Association 中間テーブル
+- belongs_to user
+- belongs_to group
