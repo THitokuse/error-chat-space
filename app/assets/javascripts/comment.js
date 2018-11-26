@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   function buildHTML(message){
     var addImage = (message.image) ? `<img class="chat-content__image" src="${message.image}">` : '';
     var html = `<li class="chat-content">
@@ -53,13 +53,27 @@ $(function() {
     })
   })
 
-  $(function(){
-    $(function(){
-      setInterval(update, 10000);
-    });
-
-    function update(){
-      //後から記述
-    }
+  var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+  $.ajax({
+    url: location.href,
+    dataType: 'json'
   })
+  .done(function(json) {
+    var id = $('.chat-content').data('messageId');
+    var insertHTML = '';
+    json.messages.forEach(function(message) {
+      id = id + 1
+      if (message.id > id ) {
+        insertHTML += buildHTML(message);
+      }
+    $('.chat-content').append(insertHTML);
+    });
+  })
+  .fail(function(json) {
+    alert('自動更新に失敗しました');
+  });
+} else {
+  clearInterval(interval);
+ }} , 5 * 1000 );
 })
