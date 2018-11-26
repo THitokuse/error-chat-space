@@ -8,7 +8,7 @@ $(document).on("turbolinks:load", function() {
                     追加
                   </p>
                 </div>`;
-    return html;
+    $('#user-search-result').append(html);
   }
 
   function notUser() {
@@ -17,7 +17,7 @@ $(document).on("turbolinks:load", function() {
                     検索結果はありません。
                   </p>
                 </div>`;
-    return html;
+    $('#user-search-result').append(html);
   }
 
   function appendMembers(name, user_id) {
@@ -48,11 +48,9 @@ $(document).on("turbolinks:load", function() {
             if (users.length !== 0) {
               users.forEach(function(user){
                 var html = appendUsers(user);
-                $('#user-search-result').append(html);
               })
             } else {
               var html = notUser();
-              $('#user-search-result').append(html);
             }
          })
       .fail(function() {
