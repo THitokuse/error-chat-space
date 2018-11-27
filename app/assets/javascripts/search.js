@@ -67,7 +67,6 @@ $(document).on("turbolinks:load", function() {
       $(this).parent().remove();
       var html = appendMembers(name, user_id);
       $('#chat-group-users').append(html);
-      $(this).parent().remove();
     });
 
     // ユーザーを削除
