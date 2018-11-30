@@ -56,14 +56,14 @@ $(document).on('turbolinks:load', function() {
   //自動更新
   function update() {
     if($('.chat__contents__content')[0]){
-      var message_id = $('.chat__contents__content:last').data('message-id');
+      var lastMessageId = $('.chat__contents__content:last').data('message-id');
     } else {
       return false
     }
 
     $.ajax({
       url: location.href,
-      data: { id : message_id },
+      data: { id : lastMessageId },
       dataType: 'json'
     })
     .done(function(data) {
