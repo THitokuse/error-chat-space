@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.where('name LIKE(?) && id != (?)', "%#{user_params[:user]}%", current_user.id)
+    respond_to do |format|
+      format.html { redirect_to new_group_path}
+      format.json
+    end
+  end
+
   def edit
 
   end
@@ -14,6 +22,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.permit(:user)
   end
 end
