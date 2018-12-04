@@ -55,9 +55,7 @@ $(document).on('turbolinks:load', function() {
 
   //自動更新
   function update() {
-    console.log($('.chat-content')[0]);
     var lastMessageId = ($('.chat-content')[0]) ? $('.chat-content:last').data('message-id') : false;
-    console.log(lastMessageId);
     $.ajax({
       url: location.href,
       data: { id : lastMessageId },
