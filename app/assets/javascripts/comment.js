@@ -55,12 +55,9 @@ $(document).on('turbolinks:load', function() {
 
   //自動更新
   function update() {
-    if($('.chat__contents__content')[0]){
-      var lastMessageId = $('.chat__contents__content:last').data('message-id');
-    } else {
-      return false
-    }
-
+    console.log($('.chat-content')[0]);
+    var lastMessageId = ($('.chat-content')[0]) ? $('.chat-content:last').data('message-id') : false;
+    console.log(lastMessageId);
     $.ajax({
       url: location.href,
       data: { id : lastMessageId },
@@ -70,7 +67,7 @@ $(document).on('turbolinks:load', function() {
       if (data.length){
         $.each(data, function(i, data){
           var html = buildHTML(data);
-          $('.chat__contents').append(html)
+          $('.chat-contents').append(html)
         })
       }
     })
