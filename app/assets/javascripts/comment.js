@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
                     ${ message.content }<br/><br/>
                     ${ addImage }
                   </div>
-                </li>`;
+                </div>`;
     return html;
   }
 
