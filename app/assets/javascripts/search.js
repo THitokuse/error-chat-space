@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function() {
+$(function() {
   function appendUsers(user) {
     var html = `<div class="chat-group-user">
                   <p class="chat-group-user__name">
