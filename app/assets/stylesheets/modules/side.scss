@@ -4,10 +4,12 @@
   height: 100vh;
   width: 300px;
   color: #fff;
+  overflow: scroll;
 }
 
 .chat-user {
   height: 60px;
+  width: 270px;
   background-color: #253141;
   padding: 20px 10px 20px 20px;
 
@@ -46,7 +48,6 @@
 
 .chat-group {
   padding: 20px 20px;
-  overflow: scroll;
 
   &__name {
     font-size: 15px;
