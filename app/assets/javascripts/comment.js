@@ -62,8 +62,8 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      if (data.length){
-        $.each(data, function(i, data){
+      if (data.messages.length){
+        $.each(data.messages, function(i, data){
           var html = buildHTML(data);
           $('.chat-contents').append(html)
         })
