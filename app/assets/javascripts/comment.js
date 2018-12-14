@@ -55,6 +55,7 @@ $(function() {
 
   //自動更新
   function update() {
+    //更新されたメッセージID取得
     var lastMessageId = ($('.chat-content')[0]) ? $('.chat-content:last').data('message-id') : 0;
     $.ajax({
       url: location.href,
@@ -74,6 +75,7 @@ $(function() {
     });
   };
 
+  //5秒ごとに自動更新を行う
   $(function() {
     $(function() {
       if (window.location.href.match(/\/groups\/\d+\/messages/)) {
