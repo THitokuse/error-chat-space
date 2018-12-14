@@ -30,9 +30,10 @@ $(function() {
                     削除
                   </p>
                 </div>`;
-    return html;
+    $('#chat-group-users').append(html);
   }
 
+  //インクリメンタルサーチ開始
   $(function() {
     $(".chat-group-form__input").on("keyup", function() {
       $("#user-search-result").children().remove();
@@ -66,7 +67,6 @@ $(function() {
       var user_id = $(this).data('id');
       $(this).parent().remove();
       var html = appendMembers(user_name, user_id);
-      $('#chat-group-users').append(html);
     });
 
     // ユーザーを削除
