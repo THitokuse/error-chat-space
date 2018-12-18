@@ -35,7 +35,7 @@ $(function() {
 
   //インクリメンタルサーチ開始
   $(function() {
-    $(".chat-group-form__input").on("keyup", function() {
+    $(".chat-group-form__input").on("input", function() {
       $("#user-search-result").children().remove();
       var user = $("#user-search-field").val();
         $.ajax({
