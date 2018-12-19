@@ -18,6 +18,7 @@ $(function() {
     return html;
   }
 
+  //メッセージ非同期通信
   $('.msg_form').on('submit', function(e){
     //フォームのsubmitイベントを中止
     e.preventDefault();
@@ -62,10 +63,10 @@ $(function() {
       data: { id : lastMessageId },
       dataType: 'json'
     })
-    .done(function(data) {
-      if (data.messages.length){
-        $.each(data.messages, function(i, data){
-          var html = buildHTML(data);
+    .done(function(messages) {
+      if (messages.length){
+        $.each(messages, function(i, messages){
+          var html = buildHTML(messages);
           $('.chat-contents').append(html)
         })
       }
