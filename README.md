@@ -1,52 +1,28 @@
-# DB
+# 大阪の大阪による大阪のためのchat-spaceメンター試験対策　エラー問題
 
-## users テーブル
+## 準備
 
-|Column|Type|Options|
-|------|----|-------|
-|id|integer(11)|AI, PRIMARY_KEY|
-|name|varchar(255)|index: true, null: false, unique: true|
-|email|varchar(255)|null: false, unique: true|
+- ruby 2.3.1
+- rails 5.0.7.1
 
-### Association
-- has_many group_users
-- has_many groups through group_users
-- has_many messages
+自分の好きなディレクトリでgit cloneしてください。
+```text:作業場所　ターミナル
+$ git clone https://github.com/THitokuse/error-chat-space.git <好きな名前>
+```
 
-## messages テーブル
+configディレクトリにsecrets.ymlを格納するために、自分のchat-spaceのsecrets.ymlをコピーして貼り付け
+→configディレクトリ内に入れる。
 
-|Column|Type|Options|
-|------|----|-------|
-|id|integer(11)|AI, PRIMARY_KEY|
-|content|varchar(255)|-------|
-|image|varchar(255)|-------|
-|group_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+データベースを作成する。
+```text:作業場所　ターミナル
+$ rake db:create
+$ rake db:migrate
+```
 
-### Association
-- belongs_to user
-- belongs_to group
 
-## groups テーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|id|integer(11)|AI, PRIMARY_KEY|
-|name|varchar(255)|null:false|
-
-### Association
-- has_many messages
-- has_many group_users
-- has_many users through group_users
-
-## group_users テーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|id|integer(11)|AI, PRIMARY_KEY|
-|user_id|reference|null: false, foreign_key: true|
-|group_id|reference|null: false, foreign_key:true|
-
-### Association 中間テーブル
-- belongs_to user
-- belongs_to group
+##問題
+①　メッセージを投稿しようとすると「500 (Internal Server Error)」がでる。(メッセージ非同期通信)
+②　自動更新で全てのメッセージが繰り返し表示されてしまう。(自動更新)
+③　自動更新が他の画面でも行われてしまう。(自動更新)
+④　ユーザーの追加ボタンを押してもチャットメンバー検索画面から消えない。(インクリメンタルサーチ)
+⑤　自動更新で画像が表示されない。(自動更新)
