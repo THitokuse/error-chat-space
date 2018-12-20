@@ -36,6 +36,7 @@ $(function() {
       contentType: false
     })
     .done(function(message){
+      console.log(message);
       //保存したデータをview画面に表示
       var html = buildHTML(message);
       $('.chat-contents').append(html);
@@ -77,13 +78,5 @@ $(function() {
   };
 
   //5秒ごとに自動更新を行う
-  $(function() {
-    $(function() {
-      if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-        setInterval(update, 5000);
-      } else {
-        clearInterval();
-    }
-    })
-  });
+  setInterval(update, 5000);
 });
